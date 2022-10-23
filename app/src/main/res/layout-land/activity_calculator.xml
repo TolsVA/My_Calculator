@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/layout_padding">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_indicator_down"
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/zero"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/result"
+        app:layout_constraintWidth_percent="0.45">
+
+        <TextView
+            android:id="@+id/history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="40dp"
+            android:layout_marginStart="@dimen/margin_zero"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:gravity="end"
+            android:textSize="@dimen/textSize_history" />
+
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/equation"
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/zero"
+        android:gravity="end"
+        android:textSize="@dimen/textSize_developments"
+        app:layout_constraintBottom_toTopOf="@+id/lain2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:textSize="@dimen/textSize_result"
+        app:layout_constraintBottom_toTopOf="@+id/lain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/scroll_indicator_down" />
+
+    <TextView
+        android:id="@+id/lain"
+        android:layout_width="@dimen/zero"
+        android:layout_height="0.1dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/key_root"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/scroll_indicator_down" />
+
+    <View
+        android:id="@+id/lain2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/margin_bottom"
+        android:layout_marginStart="@dimen/margin_start_indent"
+        android:layout_marginEnd="@dimen/margin_start"
+        android:background="@color/grey"
+        app:layout_constraintBottom_toTopOf="@+id/result" />
+
+    <Button
+        android:id="@+id/key_root"
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/zero"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_root"
+        app:layout_constraintBottom_toTopOf="@+id/key_5"
+        app:layout_constraintEnd_toEndOf="@id/key_5"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@id/scroll_indicator_down"
+        app:layout_constraintTop_toTopOf="@+id/key_del"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/key_equals"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_equals"
+        android:layout_marginBottom="@dimen/margin_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/key_dot" />
+
+    <Button
+        android:id="@+id/key_dot"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_dot"
+        android:layout_marginBottom="@dimen/margin_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_equals"
+        app:layout_constraintStart_toEndOf="@+id/key_4" />
+
+    <Button
+        android:id="@+id/key_1"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_1"
+        android:layout_marginBottom="@dimen/margin_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_2"
+        app:layout_constraintStart_toEndOf="@+id/key_0" />
+
+    <Button
+        android:id="@+id/key_0"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_0"
+        android:layout_marginBottom="@dimen/margin_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_1"
+        app:layout_constraintStart_toEndOf="@+id/scroll_indicator_down" />
+
+    <Button
+        android:id="@+id/key_2"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_2"
+        android:layout_marginBottom="@dimen/margin_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_3"
+        app:layout_constraintStart_toEndOf="@+id/key_1" />
+
+    <Button
+        android:id="@+id/key_3"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_3"
+        android:layout_marginBottom="@dimen/margin_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_4"
+        app:layout_constraintStart_toEndOf="@+id/key_2" />
+
+    <Button
+        android:id="@+id/key_4"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_4"
+        android:layout_marginBottom="@dimen/margin_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/key_dot"
+        app:layout_constraintStart_toEndOf="@+id/key_3" />
+
+    <Button
+        android:id="@+id/key_5"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_5"
+        app:layout_constraintBottom_toTopOf="@+id/key_0"
+        app:layout_constraintEnd_toEndOf="@id/key_0"
+        app:layout_constraintStart_toEndOf="@id/scroll_indicator_down" />
+
+    <Button
+        android:id="@+id/key_6"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_6"
+        app:layout_constraintBottom_toTopOf="@+id/key_1"
+        app:layout_constraintEnd_toEndOf="@id/key_1"
+        app:layout_constraintStart_toEndOf="@id/key_5" />
+
+    <Button
+        android:id="@+id/key_7"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_7"
+        app:layout_constraintBottom_toTopOf="@+id/key_2"
+        app:layout_constraintEnd_toEndOf="@id/key_2"
+        app:layout_constraintStart_toEndOf="@id/key_6" />
+
+    <Button
+        android:id="@+id/key_8"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_8"
+        app:layout_constraintBottom_toTopOf="@+id/key_3"
+        app:layout_constraintEnd_toEndOf="@id/key_3"
+        app:layout_constraintStart_toEndOf="@id/key_7" />
+
+    <Button
+        android:id="@+id/key_9"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/black"
+        android:text="@string/key_9"
+        app:layout_constraintBottom_toTopOf="@+id/key_4"
+        app:layout_constraintEnd_toEndOf="@id/key_4"
+        app:layout_constraintStart_toEndOf="@id/key_8" />
+
+    <Button
+        android:id="@+id/key_plus"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_plus"
+        app:layout_constraintBottom_toTopOf="@+id/key_equals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/key_minus" />
+
+    <Button
+        android:id="@+id/key_minus"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_minus"
+        app:layout_constraintBottom_toTopOf="@+id/key_dot"
+        app:layout_constraintEnd_toEndOf="@id/key_dot"
+        app:layout_constraintStart_toEndOf="@id/key_9" />
+
+    <Button
+        android:id="@+id/key_multi"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_multi"
+        app:layout_constraintBottom_toTopOf="@+id/key_minus"
+        app:layout_constraintEnd_toEndOf="@+id/key_minus"
+        app:layout_constraintStart_toEndOf="@id/key_right_bracket" />
+
+    <Button
+        android:id="@+id/key_del"
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/zero"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_del"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/key_6"
+        app:layout_constraintEnd_toEndOf="@+id/key_6"
+        app:layout_constraintTop_toTopOf="@+id/key_back"
+        app:layout_constraintStart_toEndOf="@id/key_root"/>
+
+    <Button
+        android:id="@+id/key_back"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_back"
+        app:layout_constraintBottom_toTopOf="@+id/key_7"
+        app:layout_constraintEnd_toEndOf="@+id/key_7"
+        app:layout_constraintStart_toEndOf="@id/key_del" />
+
+    <Button
+        android:id="@+id/key_left_bracket"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_left_bracket"
+        app:layout_constraintBottom_toTopOf="@+id/key_8"
+        app:layout_constraintEnd_toEndOf="@id/key_8"
+        app:layout_constraintStart_toEndOf="@id/key_back" />
+
+    <Button
+        android:id="@+id/key_right_bracket"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_right_bracket"
+        app:layout_constraintBottom_toTopOf="@+id/key_9"
+        app:layout_constraintEnd_toEndOf="@id/key_9"
+        app:layout_constraintStart_toEndOf="@id/key_left_bracket" />
+
+    <Button
+        android:id="@+id/key_div"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:textColor="@color/red"
+        android:text="@string/key_div"
+        app:layout_constraintBottom_toTopOf="@+id/key_plus"
+        app:layout_constraintEnd_toEndOf="@+id/key_plus"
+        app:layout_constraintStart_toEndOf="@id/key_multi" />
+</androidx.constraintlayout.widget.ConstraintLayout>

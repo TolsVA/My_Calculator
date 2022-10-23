@@ -22,4 +22,5 @@
     <string name="key_del">AC</string>
     <string name="key_div">÷</string>
     <string name="key_back">⌫</string>
+    <string name="key_root">√</string>
 </resources>

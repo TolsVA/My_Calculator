@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/hd"
     android:padding="@dimen/layout_padding">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scrollIndicatorDown"
+        android:id="@+id/scroll_indicator_down"
         android:layout_width="match_parent"
         android:layout_height="@dimen/zero"
         android:layout_marginBottom="@dimen/margin_bottom"
@@ -16,17 +16,17 @@
         app:layout_constraintBottom_toTopOf="@+id/lain2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/history"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_zero"
-            android:layout_marginBottom="@dimen/margin_zero"
-            android:gravity="end"
-            android:textSize="@dimen/textSize_history"
-            app:layout_constraintBottom_toTopOf="@+id/lain2" />
+            android:layout_height="match_parent"
+            android:layout_marginBottom="34dp"
+            android:gravity="end|bottom"
+            android:textColor="@color/black"
+            android:textSize="@dimen/textSize_history" />
 
     </androidx.core.widget.NestedScrollView>
 
@@ -39,10 +39,10 @@
         android:layout_marginEnd="@dimen/margin_start_indent"
         android:backgroundTint="@color/black"
         android:background="@color/grey"
-        app:layout_constraintBottom_toTopOf="@+id/developments" />
+        app:layout_constraintBottom_toTopOf="@+id/equation" />
 
     <TextView
-        android:id="@+id/developments"
+        android:id="@+id/equation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="end"
@@ -57,6 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_zero"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:gravity="end"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="@dimen/textSize_result"
@@ -76,11 +77,11 @@
         app:layout_constraintBottom_toTopOf="@+id/key_div" />
 
     <Button
-        android:id="@+id/key_menu"
+        android:id="@+id/key_root"
         android:layout_width="@dimen/zero"
         android:layout_height="@dimen/zero"
-        android:text="@string/key_menu"
-        android:textSize="@dimen/textSizeMenu"
+        android:text="@string/key_root"
+        android:textSize="@dimen/textSize"
         android:textColor="@color/red"
         android:background="?android:selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -96,8 +97,8 @@
         android:text="@string/key_1"
         android:textColor="@color/black"
         android:textSize="@dimen/textSize"
-        app:layout_constraintBottom_toTopOf="@+id/key_menu"
-        app:layout_constraintEnd_toEndOf="@+id/key_menu"
+        app:layout_constraintBottom_toTopOf="@+id/key_root"
+        app:layout_constraintEnd_toEndOf="@+id/key_root"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -111,7 +112,7 @@
         android:background="?android:selectableItemBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/key_dot"
-        app:layout_constraintStart_toEndOf="@+id/key_menu" />
+        app:layout_constraintStart_toEndOf="@+id/key_root" />
 
     <Button
         android:id="@+id/key_dot"
