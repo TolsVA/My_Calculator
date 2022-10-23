@@ -134,8 +134,12 @@ public class CalcFormatImpl implements CalcFormat {
                 }
                 break;
             case "√":
-                if (isNumber ( equation )) {
-                    equation += "×" + lexeme;
+                if (equation.length () > 0) {
+                    if (isNumber ( equation ) || equation.charAt ( equation.length ( ) - 1 ) == ')') {
+                        equation += "×" + lexeme;
+                    } else {
+                        equation += lexeme;
+                    }
                 } else {
                     equation += lexeme;
                 }
