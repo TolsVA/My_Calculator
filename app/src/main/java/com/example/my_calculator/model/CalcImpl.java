@@ -61,6 +61,10 @@ public class CalcImpl {
                     lexemes.add(new Lexeme(LexemeType.ROOT, c));
                     pos++;
                     continue;
+                case '∧':
+                    lexemes.add(new Lexeme(LexemeType.DEGREE, c));
+                    pos++;
+                    continue;
                 default:
                     if (c <= '9' && c >= '0' || c == ',' || c == '.') {
                         StringBuilder sb = new StringBuilder();

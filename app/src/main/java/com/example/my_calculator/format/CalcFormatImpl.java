@@ -144,6 +144,9 @@ public class CalcFormatImpl implements CalcFormat {
                     equation += lexeme;
                 }
                 break;
+            case "∧":
+
+                break;
             default:
                 equation += lexeme;
                 result = calc.calculate ( brackets.start ( equation ) );
