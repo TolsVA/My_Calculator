@@ -1,21 +1,25 @@
 package com.example.my_calculator;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.my_calculator.format.CalcFormatImpl;
+import com.example.my_calculator.style.BaseActivity;
 import com.example.my_calculator.ui.CalcPresenter;
 import com.example.my_calculator.ui.CalcView;
 
 import java.util.HashMap;
 
-public class CalculatorActivity extends AppCompatActivity implements CalcView {
+public class CalculatorActivity extends BaseActivity implements CalcView {
 
     public SharedPreferences pref;
 
@@ -50,7 +54,7 @@ public class CalculatorActivity extends AppCompatActivity implements CalcView {
     }
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState ( outState );
 
         outState.putString ( KEY_EQUATION, equation );
@@ -159,5 +163,55 @@ public class CalculatorActivity extends AppCompatActivity implements CalcView {
 
     private void setTextCounter(TextView textView, String text) {
         textView.setText ( text );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                setTitle(R.string.app_name);
+//                finish();
+                return true;
+            case R.id.clear_history:
+                history = "";
+                setTextCounter(historyView, history);
+                return true;
+            case R.id.cal_key_style:
+                // сохраним настройки
+                setAppTheme(CAL_KEY_CODE_STYLE);
+                nameStyle = getString(R.string.cal_key_style);
+                setTitle(R.string.cal_key_style);
+                // пересоздадим активити, чтобы тема применилась
+                recreate();
+                return true;
+            case R.id.my_cool_style:
+                setAppTheme(MY_COOL_CODE_STYLE);
+                nameStyle = getString(R.string.my_cool_style);
+                setTitle(R.string.my_cool_style);
+                recreate();
+                return true;
+            case R.id.material_light:
+                setAppTheme(APP_THEME_LIGHT_CODE_STYLE);
+                nameStyle = getString(R.string.material_light);
+                setTitle(R.string.material_light);
+                recreate();
+                return true;
+            case R.id.material_dark:
+                setAppTheme(APP_THEME_DARK_CODE_STYLE);
+                nameStyle = getString(R.string.material_dark);
+                setTitle(R.string.material_dark);
+                recreate();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
