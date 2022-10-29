@@ -210,7 +210,7 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
                 return true;
             case R.id.menu_theme:
                 Intent intent = new Intent ( CalculatorActivity.this, SelectThemeActivity.class );
-                intent.putExtra ( SelectThemeActivity.EXTRA_THEME, getSavedTheme ( ) );
+//                intent.putExtra ( SelectThemeActivity.EXTRA_THEME, getSavedTheme ( ) );
                 launcher.launch ( intent );
                 return true;
             default:
