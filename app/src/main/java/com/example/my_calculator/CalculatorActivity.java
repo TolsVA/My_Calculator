@@ -44,7 +44,9 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
 
     public HashMap<Integer, String> lexeme = new HashMap<> ( );
 
-    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult ( new ActivityResultContracts.StartActivityForResult ( ), result -> {
+    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult (
+            new ActivityResultContracts.StartActivityForResult ( ), result -> {
+
         if (result.getResultCode ( ) == Activity.RESULT_OK) {
             assert result.getData ( ) != null;
             Theme theme = (Theme) result.getData ( ).getSerializableExtra ( SelectThemeActivity.EXTRA_THEME );
