@@ -143,7 +143,13 @@ public class CalcFormatImpl implements CalcFormat {
                 }
                 break;
             case "∧":
-            case "":
+                break;
+            case "hello":
+                try {
+                    result = calc.calculate ( brackets.start ( equation ) );
+                } catch (Exception e) {
+                    result = "Не коректный ввод выражения";
+                }
                 break;
             default:
                 equation += lexeme;

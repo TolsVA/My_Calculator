@@ -30,8 +30,6 @@ import java.util.Objects;
 
 public class CalculatorActivity extends BaseActivity implements CalcView {
 
-    public SharedPreferences pref;
-
     private CalcPresenter presenter;
 
     public String history = "";   // История
@@ -44,7 +42,7 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
 
     private TextView historyView, equationView, resultView;
 
-    HashMap<Integer, String> lexeme = new HashMap<> ( );
+    public HashMap<Integer, String> lexeme = new HashMap<> ( );
 
     private final ActivityResultLauncher<Intent> launcher = registerForActivityResult ( new ActivityResultContracts.StartActivityForResult ( ), result -> {
         if (result.getResultCode ( ) == Activity.RESULT_OK) {
@@ -60,7 +58,7 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_calculator );
 
-        pref = getSharedPreferences ( "TABLE", MODE_PRIVATE );
+        pref = getSharedPreferences ( TABLE, MODE_PRIVATE );
         history = pref.getString ( KEY_HISTORY, "" );
 
         presenter = new CalcPresenter ( this, new CalcFormatImpl ( ) );
@@ -69,7 +67,7 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
 
         if (getIntent ( ).hasExtra ( "hello" ) && !Objects.equals ( getIntent ( ).getStringExtra ( "hello" ), "" )) {
             equation = getIntent ( ).getStringExtra ( "hello" );
-            presenter.onDigitPressed ( history, equation, "" );
+            presenter.onDigitPressed ( history, equation, "hello" );
         }
 
         setTextCounter ( historyView, history );
@@ -199,8 +197,6 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId ( )) {
             case android.R.id.home:
-                setTitle ( R.string.app_name );
-//                finish();
                 return true;
             case R.id.clear_history:
                 history = "";
