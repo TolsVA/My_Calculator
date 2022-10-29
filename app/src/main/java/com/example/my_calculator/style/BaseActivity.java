@@ -17,17 +17,18 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
-        pref = getSharedPreferences ( TABLE, MODE_PRIVATE );
         setTheme ( getSavedTheme ( ).getTheme ( ) );
     }
 
     public void saveTheme(Theme theme) {
+        pref = getSharedPreferences ( TABLE, MODE_PRIVATE );
         pref.edit ( )
                 .putString ( SAVED_STYLE, theme.getKey ( ) )
                 .apply ( );
     }
 
     public Theme getSavedTheme() {
+        pref = getSharedPreferences ( TABLE, MODE_PRIVATE );
         String key = String.valueOf ( pref.getString ( SAVED_STYLE, Theme.ONE.getKey ( ) ) );
         for (Theme theme : getAll ( )) {
             if (key.equals ( theme.getKey ( ) )) {
