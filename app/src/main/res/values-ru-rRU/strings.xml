@@ -27,5 +27,6 @@
     <string name="material_light"><b>Красная тема</b></string>
     <string name="material_dark"><i><b><u>Тёмная</u></b></i> <i><u>тема</u></i></string>
     <string name="clear_history">Очистить историю.</string>
-    <string name="theme">Tема</string>
+    <string name="menu_theme">Выбор темы</string>
+    <string name="instructions">Инструкция</string>
 </resources>

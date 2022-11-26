@@ -5,7 +5,6 @@ public class CalcPresenter {
     private final CalcView view;
     private final CalcFormat format;
 
-
     public CalcPresenter(CalcView view, CalcFormat format) {
         this.view = view;
         this.format = format;

@@ -1,10 +1,16 @@
 package com.example.my_calculator;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+
 import androidx.core.widget.NestedScrollView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,14 +20,15 @@ import android.widget.TextView;
 
 import com.example.my_calculator.format.CalcFormatImpl;
 import com.example.my_calculator.style.BaseActivity;
+import com.example.my_calculator.style.SelectThemeActivity;
+import com.example.my_calculator.style.Theme;
 import com.example.my_calculator.ui.CalcPresenter;
 import com.example.my_calculator.ui.CalcView;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class CalculatorActivity extends BaseActivity implements CalcView {
-
-    public SharedPreferences pref;
 
     private CalcPresenter presenter;
 
@@ -35,26 +42,41 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
 
     private TextView historyView, equationView, resultView;
 
-    HashMap<Integer, String> lexeme = new HashMap<> ( );
+    public HashMap<Integer, String> lexeme = new HashMap<> ( );
+
+    private final ActivityResultLauncher<Intent> launcher = registerForActivityResult (
+            new ActivityResultContracts.StartActivityForResult ( ), result -> {
+
+        if (result.getResultCode ( ) == Activity.RESULT_OK) {
+            assert result.getData ( ) != null;
+            Theme theme = (Theme) result.getData ( ).getSerializableExtra ( SelectThemeActivity.EXTRA_THEME );
+            saveTheme ( theme );
+            recreate ( );
+        }
+    } );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_calculator );
 
-        pref = getSharedPreferences ( "TABLE", MODE_PRIVATE );
+        pref = getSharedPreferences ( TABLE, MODE_PRIVATE );
         history = pref.getString ( KEY_HISTORY, "" );
 
         presenter = new CalcPresenter ( this, new CalcFormatImpl ( ) );
 
         initView ( );
 
-        setTextCounter ( historyView, history );
+        if (getIntent ( ).hasExtra ( "hello" ) && !Objects.equals ( getIntent ( ).getStringExtra ( "hello" ), "" )) {
+            equation = getIntent ( ).getStringExtra ( "hello" );
+            presenter.onDigitPressed ( history, equation, "hello" );
+        }
 
+        setTextCounter ( historyView, history );
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState ( outState );
 
         outState.putString ( KEY_EQUATION, equation );
@@ -70,10 +92,10 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
         super.onRestoreInstanceState ( savedInstanceState );
 
         equation = savedInstanceState.getString ( KEY_EQUATION );
-        result = savedInstanceState.getString (KEY_RESULT);
+        result = savedInstanceState.getString ( KEY_RESULT );
 
         setTextCounter ( equationView, equation );
-        setTextCounter(resultView, result);
+        setTextCounter ( resultView, result );
     }
 
     private void initView() {
@@ -137,7 +159,7 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
     View.OnClickListener lexemeClickListener = new View.OnClickListener ( ) {
         @Override
         public void onClick(View view) {
-            presenter.onDigitPressed ( history, equation, lexeme.get ( view.getId ( ) )  );
+            presenter.onDigitPressed ( history, equation, lexeme.get ( view.getId ( ) ) );
         }
     };
 
@@ -158,7 +180,7 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
         setTextCounter ( historyView, history );
         setTextCounter ( equationView, equation );
         setTextCounter ( resultView, result );
-        scrollText ();
+        scrollText ( );
     }
 
     private void setTextCounter(TextView textView, String text) {
@@ -167,51 +189,34 @@ public class CalculatorActivity extends BaseActivity implements CalcView {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater ( );
+        inflater.inflate ( R.menu.main, menu );
+        return super.onCreateOptionsMenu ( menu );
     }
 
     @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId ( )) {
             case android.R.id.home:
-                setTitle(R.string.app_name);
-//                finish();
                 return true;
             case R.id.clear_history:
                 history = "";
-                setTextCounter(historyView, history);
+                setTextCounter ( historyView, history );
                 return true;
-            case R.id.cal_key_style:
-                // сохраним настройки
-                setAppTheme(CAL_KEY_CODE_STYLE);
-                nameStyle = getString(R.string.cal_key_style);
-                setTitle(R.string.cal_key_style);
-                // пересоздадим активити, чтобы тема применилась
-                recreate();
+            case R.id.instructions:
+                String url = getResources ( ).getString ( R.string.instructions_google );
+                Uri uri = Uri.parse ( url );
+                Intent browser = new Intent ( Intent.ACTION_VIEW, uri );
+                launcher.launch ( Intent.createChooser ( browser, "" ) );
                 return true;
-            case R.id.my_cool_style:
-                setAppTheme(MY_COOL_CODE_STYLE);
-                nameStyle = getString(R.string.my_cool_style);
-                setTitle(R.string.my_cool_style);
-                recreate();
-                return true;
-            case R.id.material_light:
-                setAppTheme(APP_THEME_LIGHT_CODE_STYLE);
-                nameStyle = getString(R.string.material_light);
-                setTitle(R.string.material_light);
-                recreate();
-                return true;
-            case R.id.material_dark:
-                setAppTheme(APP_THEME_DARK_CODE_STYLE);
-                nameStyle = getString(R.string.material_dark);
-                setTitle(R.string.material_dark);
-                recreate();
+            case R.id.menu_theme:
+                Intent intent = new Intent ( CalculatorActivity.this, SelectThemeActivity.class );
+//                intent.putExtra ( SelectThemeActivity.EXTRA_THEME, getSavedTheme ( ) );
+                launcher.launch ( intent );
                 return true;
             default:
-                return super.onOptionsItemSelected(item);
+                return super.onOptionsItemSelected ( item );
         }
     }
 }

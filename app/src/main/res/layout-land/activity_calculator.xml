@@ -21,10 +21,10 @@
             style="@style/CalKey1.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_bottom_Text"
             android:layout_marginStart="@dimen/margin_zero"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginBottom="@dimen/margin_bottom_Text"
             android:gravity="end|bottom"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textSize="@dimen/textSize_history" />
 
     </androidx.core.widget.NestedScrollView>
@@ -34,9 +34,9 @@
         style="@style/CalKey1.TextView"
         android:layout_width="@dimen/zero"
         android:layout_height="@dimen/zero"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:gravity="end|bottom"
         android:textSize="@dimen/textSize_developments"
-        android:layout_marginBottom="@dimen/margin_bottom"
         app:layout_constraintBottom_toTopOf="@+id/lain2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,17 +70,17 @@
         android:id="@+id/lain2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_layout"
-        android:layout_marginBottom="@dimen/margin_bottom"
         android:layout_marginStart="@dimen/margin_start_indent"
         android:layout_marginEnd="@dimen/margin_start"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:background="@color/grey"
         app:layout_constraintBottom_toTopOf="@+id/result" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/key_root"
+        style="@style/CalKey1.Operation"
         android:layout_width="@dimen/zero"
         android:layout_height="@dimen/zero"
-        style="@style/CalKey1.Operation"
         android:text="@string/key_root"
         app:layout_constraintBottom_toTopOf="@+id/key_7"
         app:layout_constraintEnd_toEndOf="@id/key_7"
@@ -246,8 +246,8 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/key_5"
         app:layout_constraintEnd_toStartOf="@+id/key_back"
-        app:layout_constraintTop_toTopOf="@+id/key_back"
-        app:layout_constraintStart_toEndOf="@id/scroll_indicator_down"/>
+        app:layout_constraintStart_toEndOf="@id/scroll_indicator_down"
+        app:layout_constraintTop_toTopOf="@+id/key_back" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/key_back"

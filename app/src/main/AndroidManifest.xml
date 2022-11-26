@@ -6,9 +6,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.My_Calculator">
+        <activity
+            android:name=".style.SelectThemeActivity"
+            android:exported="false" />
         <activity
             android:name=".CalculatorActivity"
             android:exported="true">
@@ -16,6 +19,14 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="calc"
+                    android:host="launch"/>
+                <!-- calc://launch -->
             </intent-filter>
         </activity>
     </application>

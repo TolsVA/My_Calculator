@@ -15,7 +15,6 @@ public class CalcFormatImpl implements CalcFormat {
 
     private final CalcImpl calc = new CalcImpl ( );
 
-
     @Override
     public String[] formatExpression(String history, String equation, String lexeme) {
         switch (lexeme) {
@@ -76,11 +75,11 @@ public class CalcFormatImpl implements CalcFormat {
                 }
                 break;
             case "=":
-                if (equation.length () > 0 && !result.equals ( "" )) {
+                if (equation.length ( ) > 0 && !result.equals ( "" )) {
                     while (!isNumber ( equation )) {
                         equation = equation.substring ( 0, equation.length ( ) - 1 );
                     }
-                    equation = brackets.start (equation);
+                    equation = brackets.start ( equation );
                     if (history.equals ( "" )) {
                         history = equation + "=" + result;
                     } else {
@@ -97,10 +96,9 @@ public class CalcFormatImpl implements CalcFormat {
                 result = "";
                 break;
             case "back":
-
                 if (equation.length ( ) > 0) {
                     equation = equation.substring ( 0, equation.length ( ) - 1 );
-                    if (equation.length () == 0) {
+                    if (equation.length ( ) == 0) {
                         result = "";
                         break;
                     }
@@ -110,7 +108,7 @@ public class CalcFormatImpl implements CalcFormat {
                             if (equation.charAt ( i ) <= '9' && equation.charAt ( i ) >= '0') {
                                 result = calc.calculate ( brackets.start ( equation.substring ( 0, i + 1 ) ) );
                                 if (!result.equals ( "♾" )) {
-                                    result = cut(result);
+                                    result = cut ( result );
                                 }
                                 break;
                             }
@@ -119,22 +117,22 @@ public class CalcFormatImpl implements CalcFormat {
                             }
                         }
                     } else {
-                        result = calc.calculate ( brackets.start ( equation ));
+                        result = calc.calculate ( brackets.start ( equation ) );
                         if (!result.equals ( "♾" )) {
-                            result = cut(result);
+                            result = cut ( result );
                         }
                     }
                 }
                 break;
             case ",":
-                if (equation.length () > 0) {
+                if (equation.length ( ) > 0) {
                     if (isNumber ( equation )) {
                         equation += lexeme;
                     }
                 }
                 break;
             case "√":
-                if (equation.length () > 0) {
+                if (equation.length ( ) > 0) {
                     if (isNumber ( equation ) || equation.charAt ( equation.length ( ) - 1 ) == ')') {
                         equation += "×" + lexeme;
                     } else {
@@ -145,7 +143,13 @@ public class CalcFormatImpl implements CalcFormat {
                 }
                 break;
             case "∧":
-
+                break;
+            case "hello":
+                try {
+                    result = calc.calculate ( brackets.start ( equation ) );
+                } catch (Exception e) {
+                    result = "Не коректный ввод выражения";
+                }
                 break;
             default:
                 equation += lexeme;
@@ -155,7 +159,6 @@ public class CalcFormatImpl implements CalcFormat {
                 }
                 break;
         }
-
         return new String[]{history, equation, result};
     }
 
@@ -176,5 +179,4 @@ public class CalcFormatImpl implements CalcFormat {
                 equation.charAt ( equation.length ( ) - 1 ) == '÷' ||
                 equation.charAt ( equation.length ( ) - 1 ) == ',';
     }
-
 }
