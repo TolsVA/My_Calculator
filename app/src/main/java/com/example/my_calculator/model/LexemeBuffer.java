@@ -13,7 +13,7 @@ public class LexemeBuffer {
     }
 
     public Lexeme next() {
-        return lexemes.get(pos++);
+        return lexemes.get ( pos++ );
     }
 
     public void back() {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CalKey1.AppThemeLight" parent="Theme.MaterialComponents.Light"> <!-- Красная тема -->
+        <item name="colorPrimary">@color/df</item>
+        <item name="android:textColor">@color/burgundy</item>
+        <item name="android:colorForeground">@color/burgundy</item>
+        <item name="android:fontFamily">@font/o_font</item>
+        <item name="android:statusBarColor">@color/burgundy</item>  <!-- цвет StatusBar -->
+        <item name="android:textSize">@dimen/textSize</item>
+        <item name="android:navigationBarColor">?android:statusBarColor</item>
+    </style>
+</resources>

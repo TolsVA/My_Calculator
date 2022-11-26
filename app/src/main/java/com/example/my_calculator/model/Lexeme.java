@@ -14,7 +14,7 @@ public class Lexeme {
 
     public Lexeme(LexemeType type, Character value) {
         this.type = type;
-        this.value = value.toString();
+        this.value = value.toString ( );
     }
 
     @NonNull

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CalKey" parent="Theme.AppCompat"> <!-- Светлая тема -->
+        <item name="android:background">@color/white</item>
+        <item name="android:textSize">?android:textSize</item>
+        <item name="android:tint">@color/black</item> <!-- цвет стрелки и точек -->
+        <item name="android:textColor">@color/black</item><!-- цвет текста кнопок -->
+        <item name="colorPrimary">@color/df</item>
+        <item name="android:textColorPrimary">?android:textColor</item> <!-- цвет названия темы -->
+        <item name="android:statusBarColor">@color/grey</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:navigationBarColor">?android:statusBarColor</item>
+    </style>
+    <style name="CalKey1" parent="CalKey">
+        <item name="android:background">?android:selectableItemBackground</item>
+<!--        <item name="android:fontFamily">@font/herculean</item>-->
+<!--        <item name="android:textSize">@dimen/textSize</item>-->
+    </style>
+    <style name="CalKey1.Operation">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:fontFamily">?android:fontFamily</item>
+        <item name="android:textSize">@dimen/textSize</item>
+    </style>
+    <style name="CalKey1.Number">
+        <item name="android:textColor">?android:textColor</item>
+        <item name="android:fontFamily">?android:fontFamily</item>
+        <item name="android:textSize">@dimen/textSize</item>
+    </style>
+    <style name="CalKey1.TextView">
+        <item name="android:textColor">?android:textColor</item>
+        <item name="android:fontFamily">?android:fontFamily</item>
+    </style>
+    <style name="MyCoolStyle" parent="CalKey">  <!-- Синяя тема -->
+        <item name="android:tint">@color/purple_700</item> <!-- цвет стрелки и точек -->
+        <item name="android:textColor">@color/purple_700</item><!-- цвет текста на кнопках -->
+        <item name="android:textColorPrimary">@color/purple_700</item> <!-- цвет названия темы -->
+        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:fontFamily">@font/american_typewriter</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">@dimen/textSize</item>
+    </style>
+    <style name="CalKey1.AppThemeLight" parent="Theme.MaterialComponents.Light"> <!-- Красная тема -->
+        <item name="colorPrimary">@color/df</item>
+        <item name="android:textColor">@color/burgundy</item>
+        <item name="android:colorForeground">@color/burgundy</item>
+        <item name="android:fontFamily">@font/o_font</item>
+        <item name="android:statusBarColor">@color/burgundy</item>  <!-- цвет StatusBar -->
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:textSize">@dimen/textSize</item>
+    </style>
+    <style name="AppThemeDark" parent="Theme.MaterialComponents">  <!-- Темная тема -->
+        <item name="android:textColor">@color/white</item>
+        <item name="android:navigationBarColor">?android:background</item>
+        <item name="android:textSize">@dimen/textSize</item>
+    </style>
+</resources>
