@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textSize">36sp</dimen>
+    <dimen name="margin_bottom">4dp</dimen>
+    <dimen name="margin_start_indent">24dp</dimen>
+    <dimen name="margin_zero">0dp</dimen>
+    <dimen name="textSize_history">32sp</dimen>
+    <dimen name="textSize_developments">42sp</dimen>
+    <dimen name="textSize_result">48sp</dimen>
+    <dimen name="layout_padding">4dp</dimen>
+    <dimen name="zero">0dp</dimen>
+    <dimen name="margin_bottom_Text">34dp</dimen>
+    <dimen name="height_layout">0.1dp</dimen>
+    <dimen name="textSizeMenu">8sp</dimen>
+    <dimen name="margin_card">8dp</dimen>
+    <dimen name="radius_card">10dp</dimen>
+</resources>
